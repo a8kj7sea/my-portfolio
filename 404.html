@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 | Page Not Found</title>
+
+    <meta name="description"
+        content="Personal portfolio of Ibrahim Athamaneh, a passionate Java Software Engineer specializing in backend development, RESTful APIs, and AI-driven solutions. Seeking new opportunities in software development.">
+    <meta name="author" content="Ibrahim Athamaneh">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://a8kj7sea.github.io/my-portfolio/404.html">
+    <meta property="og:title" content="404 | Page Not Found">
+    <meta property="og:description" content="The requested page could not be found. Returning to the main site.">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/104179839?v=4">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://a8kj7sea.github.io/my-portfolio/404.html">
+    <meta name="twitter:title" content="404 | Page Not Found">
+    <meta name="twitter:description" content="The requested page could not be found. Returning to the main site.">
+    <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/104179839?v=4">
+    <link rel="canonical" href="https://a8kj7sea.github.io/my-portfolio/404.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" type="image/png" href="/images/favicon/matrix.png">
+
+    <style>
+        :root {
+            --glitch-text-color: var(--primary-accent);
+        }
+
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            text-align: center;
+            background-color: var(--bg-color);
+        }
+
+        #matrix-background {
+            z-index: -1;
+        }
+
+        .glitch-container {
+            font-family: var(--font-mono);
+            font-size: 5rem;
+            color: var(--glitch-text-color);
+            position: relative;
+            text-shadow: 0 0 5px var(--primary-accent);
+        }
+
+        .glitch-container h1 {
+            font-size: 5rem;
+            margin: 0;
+            position: relative;
+        }
+
+        .glitch-container h1:before,
+        .glitch-container h1:after {
+            content: "SYSTEM FAILURE: PAGE NOT FOUND";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+            overflow: hidden;
+            color: var(--glitch-text-color);
+        }
+
+        .glitch-container h1:before {
+            left: 2px;
+            text-shadow: -2px 0 var(--link-color);
+            animation: glitch-anim-1 2s infinite linear alternate-reverse;
+        }
+
+        .glitch-container h1:after {
+            left: -2px;
+            text-shadow: -2px 0 var(--error-color);
+            animation: glitch-anim-2 2s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim-1 {
+            0% {
+                clip-path: inset(36% 0 61% 0);
+            }
+
+            10% {
+                clip-path: inset(57% 0 11% 0);
+            }
+
+            20% {
+                clip-path: inset(12% 0 77% 0);
+            }
+
+            30% {
+                clip-path: inset(48% 0 29% 0);
+            }
+
+            40% {
+                clip-path: inset(30% 0 49% 0);
+            }
+
+            50% {
+                clip-path: inset(81% 0 10% 0);
+            }
+
+            60% {
+                clip-path: inset(21% 0 62% 0);
+            }
+
+            70% {
+                clip-path: inset(33% 0 29% 0);
+            }
+
+            80% {
+                clip-path: inset(1% 0 71% 0);
+            }
+
+            90% {
+                clip-path: inset(33% 0 46% 0);
+            }
+
+            100% {
+                clip-path: inset(42% 0 51% 0);
+            }
+        }
+
+        @keyframes glitch-anim-2 {
+            0% {
+                clip-path: inset(14% 0 77% 0);
+            }
+
+            10% {
+                clip-path: inset(86% 0 11% 0);
+            }
+
+            20% {
+                clip-path: inset(50% 0 20% 0);
+            }
+
+            30% {
+                clip-path: inset(38% 0 59% 0);
+            }
+
+            40% {
+                clip-path: inset(21% 0 63% 0);
+            }
+
+            50% {
+                clip-path: inset(54% 0 35% 0);
+            }
+
+            60% {
+                clip-path: inset(7% 0 74% 0);
+            }
+
+            70% {
+                clip-path: inset(83% 0 8% 0);
+            }
+
+            80% {
+                clip-path: inset(41% 0 40% 0);
+            }
+
+            90% {
+                clip-path: inset(62% 0 30% 0);
+            }
+
+            100% {
+                clip-path: inset(27% 0 55% 0);
+            }
+        }
+
+        .glitch-message {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            margin-top: 20px;
+            color: #888;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 2s;
+        }
+
+        .redirect-message {
+            margin-top: 10px;
+            color: #aaa;
+            font-size: 1rem;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 3s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="matrix-background"></canvas>
+
+    <div class="glitch-container">
+        <h1>SYSTEM FAILURE: PAGE NOT FOUND</h1>
+        <p class="glitch-message">
+            <span style="color: var(--error-color);">Error 404.</span>
+            <br>
+            File not found. Initiating system reset...
+        </p>
+        <p class="redirect-message">
+            Redirecting to homepage in <span id="countdown"></span> seconds...
+        </p>
+    </div>
+
+    <audio id="glitch-sound" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" preload="auto"></audio>
+
+    <script>
+        // Redirect logic
+        window.onload = function () {
+            // Play a sound effect
+            const audio = document.getElementById('glitch-sound');
+            audio.play();
+
+            // Set a random redirect time between 7 and 13 seconds
+            const minTime = 7;
+            const maxTime = 13;
+            const redirectTime = Math.floor(Math.random() * (maxTime - minTime + 1) + minTime);
+
+            let countdownElement = document.getElementById('countdown');
+            let countdown = redirectTime;
+            countdownElement.textContent = countdown;
+
+            // Update the countdown every second
+            const countdownInterval = setInterval(() => {
+                countdown--;
+                countdownElement.textContent = countdown;
+
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    // Redirect to the homepage
+                    window.location.href = "/";
+                }
+            }, 1000);
+        };
+    </script>
+    <script type="module" src="./script/script.js" defer></script>
+</body>
+
+</html>
