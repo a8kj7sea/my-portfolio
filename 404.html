@@ -4,93 +4,124 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>404 | Page Not Found</title>
 
+    <title>404 | Page Not Found</title>
     <meta name="description"
-        content="Personal portfolio of Ibrahim Athamaneh, a passionate Java Software Engineer specializing in backend development, RESTful APIs, and AI-driven solutions. Seeking new opportunities in software development.">
+        content="The page you were looking for could not be found on Ibrahim Athamaneh's portfolio.">
     <meta name="author" content="Ibrahim Athamaneh">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://a8kj7sea.github.io/my-portfolio/404.html">
+    <link rel="canonical" href="https://a8kj7sea.github.io/my-portfolio/404.html">
+    <link rel="icon" type="image/png" href="./images/favicon/matrix.png">
+
     <meta property="og:title" content="404 | Page Not Found">
     <meta property="og:description" content="The requested page could not be found. Returning to the main site.">
     <meta property="og:image" content="https://avatars.githubusercontent.com/u/104179839?v=4">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://a8kj7sea.github.io/my-portfolio/404.html">
-    <meta name="twitter:title" content="404 | Page Not Found">
-    <meta name="twitter:description" content="The requested page could not be found. Returning to the main site.">
-    <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/104179839?v=4">
-    <link rel="canonical" href="https://a8kj7sea.github.io/my-portfolio/404.html">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Roboto:wght@400;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=VT323&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="icon" type="image/png" href="/images/favicon/matrix.png">
+    <link rel="icon" type="image/png" href="./images/favicon/matrix.png">
 
     <style>
         :root {
-            --glitch-text-color: var(--primary-accent);
+            --primary-accent: #00ff41;
+            --background-color: #0A0A0A;
+            --card-bg-color: rgba(10, 10, 10, 0.7);
+            --border-color: rgba(0, 255, 65, 0.2);
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --glitch-color-1: #ff00ff;
+            /* Magenta */
+            --glitch-color-2: #00ffff;
+            /* Cyan */
+            --font-header: 'VT323', monospace;
+            --font-body: 'Roboto', sans-serif;
         }
 
         body,
         html {
             height: 100%;
             margin: 0;
+            background-color: var(--background-color);
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
             text-align: center;
-            background-color: var(--bg-color);
+            overflow: hidden;
+            font-family: var(--font-body);
         }
 
-        #matrix-background {
-            z-index: -1;
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            opacity: 0.3;
         }
 
-        .glitch-container {
-            font-family: var(--font-mono);
-            font-size: 5rem;
-            color: var(--glitch-text-color);
+        .error-card {
             position: relative;
-            text-shadow: 0 0 5px var(--primary-accent);
+            z-index: 2;
+            max-width: 600px;
+            width: 90%;
+            background: var(--card-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            color: var(--text-primary);
+            animation: fadeInCard 1s ease-out forwards;
         }
 
-        .glitch-container h1 {
-            font-size: 5rem;
+        @keyframes fadeInCard {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .glitch-text {
+            font-family: var(--font-header);
+            font-size: 6rem;
+            color: var(--primary-accent);
+            position: relative;
+            text-shadow: 0 0 10px var(--primary-accent);
             margin: 0;
-            position: relative;
         }
 
-        .glitch-container h1:before,
-        .glitch-container h1:after {
-            content: "SYSTEM FAILURE: PAGE NOT FOUND";
+        .glitch-text:before,
+        .glitch-text:after {
+            content: "404";
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--bg-color);
+            background: transparent;
             overflow: hidden;
-            color: var(--glitch-text-color);
         }
 
-        .glitch-container h1:before {
-            left: 2px;
-            text-shadow: -2px 0 var(--link-color);
-            animation: glitch-anim-1 2s infinite linear alternate-reverse;
+        .glitch-text:before {
+            left: 3px;
+            text-shadow: -3px 0 var(--glitch-color-1);
+            animation: glitch-anim 2.5s infinite linear alternate-reverse;
         }
 
-        .glitch-container h1:after {
-            left: -2px;
-            text-shadow: -2px 0 var(--error-color);
-            animation: glitch-anim-2 2s infinite linear alternate-reverse;
+        .glitch-text:after {
+            left: -3px;
+            text-shadow: -3px 0 var(--glitch-color-2);
+            animation: glitch-anim 3s infinite linear alternate-reverse;
         }
 
-        @keyframes glitch-anim-1 {
+        @keyframes glitch-anim {
             0% {
-                clip-path: inset(36% 0 61% 0);
+                clip-path: inset(15% 0 86% 0);
             }
 
             10% {
@@ -98,7 +129,7 @@
             }
 
             20% {
-                clip-path: inset(12% 0 77% 0);
+                clip-path: inset(92% 0 1% 0);
             }
 
             30% {
@@ -134,126 +165,106 @@
             }
         }
 
-        @keyframes glitch-anim-2 {
-            0% {
-                clip-path: inset(14% 0 77% 0);
-            }
-
-            10% {
-                clip-path: inset(86% 0 11% 0);
-            }
-
-            20% {
-                clip-path: inset(50% 0 20% 0);
-            }
-
-            30% {
-                clip-path: inset(38% 0 59% 0);
-            }
-
-            40% {
-                clip-path: inset(21% 0 63% 0);
-            }
-
-            50% {
-                clip-path: inset(54% 0 35% 0);
-            }
-
-            60% {
-                clip-path: inset(7% 0 74% 0);
-            }
-
-            70% {
-                clip-path: inset(83% 0 8% 0);
-            }
-
-            80% {
-                clip-path: inset(41% 0 40% 0);
-            }
-
-            90% {
-                clip-path: inset(62% 0 30% 0);
-            }
-
-            100% {
-                clip-path: inset(27% 0 55% 0);
-            }
+        .error-card h2 {
+            font-family: var(--font-header);
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin: 10px 0;
         }
 
-        .glitch-message {
-            font-family: var(--font-mono);
-            font-size: 1.5rem;
+        .error-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 20px 0;
+        }
+
+        .home-button {
+            display: inline-block;
+            font-family: var(--font-header);
+            color: var(--primary-accent);
+            background-color: transparent;
+            border: 2px solid var(--primary-accent);
+            padding: 12px 25px;
             margin-top: 20px;
-            color: #888;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-            animation-delay: 2s;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .home-button:hover {
+            background-color: var(--primary-accent);
+            color: #000;
         }
 
         .redirect-message {
-            margin-top: 10px;
-            color: #aaa;
-            font-size: 1rem;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-            animation-delay: 3s;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
+            font-size: 0.9rem;
+            margin-top: 25px;
+            color: var(--text-secondary);
+            opacity: 0.7;
         }
     </style>
 </head>
 
 <body>
+
     <canvas id="matrix-background"></canvas>
 
-    <div class="glitch-container">
-        <h1>SYSTEM FAILURE: PAGE NOT FOUND</h1>
-        <p class="glitch-message">
-            <span style="color: var(--error-color);">Error 404.</span>
-            <br>
-            File not found. Initiating system reset...
-        </p>
+    <div class="error-card">
+        <h1 class="glitch-text">404</h1>
+        <h2>Page Not Found</h2>
+        <p>It seems you've ventured into an uncharted sector of the matrix. The path you followed leads to a dead end.
+            Let's get you back on track.</p>
+
+        <a href="./index.html" class="home-button">Return to Homepage</a>
+
         <p class="redirect-message">
-            Redirecting to homepage in <span id="countdown"></span> seconds...
+            Automatic redirection in <span id="countdown">10</span> seconds...
         </p>
     </div>
 
-    <audio id="glitch-sound" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" preload="auto"></audio>
-
     <script>
-        // Redirect logic
-        window.onload = function () {
-            // Play a sound effect
-            const audio = document.getElementById('glitch-sound');
-            audio.play();
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Matrix Background Logic ---
+            const canvas = document.getElementById('matrix-background');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            let columns = canvas.width / 16;
+            let drops = Array(Math.floor(columns)).fill(1);
+            const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%";
 
-            // Set a random redirect time between 7 and 13 seconds
-            const minTime = 7;
-            const maxTime = 13;
-            const redirectTime = Math.floor(Math.random() * (maxTime - minTime + 1) + minTime);
+            function draw() {
+                ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#00ff41'; // Matrix Green
+                ctx.font = `16px monospace`;
+                for (let i = 0; i < drops.length; i++) {
+                    const char = matrix[Math.floor(Math.random() * matrix.length)];
+                    ctx.fillText(char, i * 16, drops[i] * 16);
+                    if (drops[i] * 16 > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+            setInterval(draw, 50);
 
-            let countdownElement = document.getElementById('countdown');
-            let countdown = redirectTime;
-            countdownElement.textContent = countdown;
+            // --- Countdown & Redirect Logic ---
+            const countdownElement = document.getElementById('countdown');
+            let countdown = 10; // Start countdown from 10 seconds
 
-            // Update the countdown every second
             const countdownInterval = setInterval(() => {
                 countdown--;
-                countdownElement.textContent = countdown;
-
+                if (countdownElement) {
+                    countdownElement.textContent = countdown;
+                }
                 if (countdown <= 0) {
                     clearInterval(countdownInterval);
-                    // Redirect to the homepage
-                    window.location.href = "./index.html";
+                    window.location.href = "./index.html"; // Redirect to homepage
                 }
             }, 1000);
-        };
+        });
     </script>
-    <script type="module" src="./script/script.js" defer></script>
 </body>
 
 </html>

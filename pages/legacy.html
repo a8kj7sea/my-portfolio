@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ibrahim Athamaneh | Java Software Engineer & AI Developer</title>
+
+  <meta name="description"
+    content="Personal portfolio of Ibrahim Athamaneh, a passionate Java Software Engineer specializing in backend development, RESTful APIs, and AI-driven solutions. Seeking new opportunities in software development.">
+  <meta name="author" content="Ibrahim Athamaneh">
+
+  <meta name="keywords"
+    content="Ibrahim Athamaneh, Java Developer, Software Engineer, Backend Developer, AI Developer, Spring Boot, RESTful APIs, Microservices, SQL, VueJS, Portfolio, Jordan">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://a8kj7sea.github.io/my-portfolio/">
+  <meta property="og:title" content="Ibrahim Athamaneh | Java Software Engineer & AI Developer">
+  <meta property="og:description"
+    content="Explore the projects and skills of Ibrahim Athamaneh, a Java developer with a passion for building robust backend systems and AI applications.">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/104179839?v=4">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://a8kj7sea.github.io/my-portfolio/">
+  <meta name="twitter:title" content="Ibrahim Athamaneh | Java Software Engineer & AI Developer">
+  <meta name="twitter:description"
+    content="Explore the projects and skills of Ibrahim Athamaneh, a Java developer with a passion for building robust backend systems and AI applications.">
+  <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/104179839?v=4">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://a8kj7sea.github.io/my-portfolio/">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Ibrahim Athamaneh",
+        "alternateName": "Ibrahim Samer",
+        "headline": "Java Software Engineer & AI Developer",
+        "description": "A Java developer specializing in backend technologies like Spring Boot and RESTful APIs, with a strong interest in applying AI and machine learning to solve real-world problems.",
+        "image": "https://avatars.githubusercontent.com/u/104179839?v=4",
+        "url": "https://a8kj7sea.github.io/my-portfolio/",
+        "sameAs": [
+          "https://www.linkedin.com/in/ibrax/",
+          "https://github.com/a8kj7sea"
+        ],
+        "knowsAbout": ["Java", "Spring Boot", "Backend Development", "SQL", "RESTful APIs", "Artificial Intelligence", "Machine Learning", "Vue.js", "Software Engineering"],
+        "jobTitle": "Software Engineer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Seeking Opportunities"
+        },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Al-Balqa' Applied University"
+        }
+      }
+    }
+    </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/legacy.css">
+  <link rel="icon" type="image/png" href="../images/favicon/matrix.png">
+</head>
+
+<body>
+  <canvas id="matrix-background"></canvas>
+
+  <div id="app" :class="{ 'terminal-open': isTerminalOpen }" :style="appStyle">
+
+    <button v-if="!isTerminalOpen" class="terminal-button" @click="openTerminal">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m7 11 2-2-2-2" />
+        <path d="M11 13h4" />
+      </svg>
+      <span>Terminal</span>
+    </button>
+
+    <div class="terminal-window" :class="{ 'is-active': isTerminalOpen }" ref="terminalRef">
+      <div class="terminal-header">
+        <span>ibrahim@portfolio: ~</span>
+        <button class="minimize-btn" @click="minimizeTerminal" title="Minimize">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2.5">
+            <path d="M20 12H4" />
+          </svg>
+        </button>
+      </div>
+      <div class="terminal-body" ref="terminalOutput" @click="focusInput">
+        <div v-for="(line, index) in commandHistory" :key="index" class="output-line">
+          <div v-if="line.type === 'command'">
+            <span class="prompt-user">guest@portfolio:~$</span>
+            <span class="command-history-text">{{ line.text }}</span>
+          </div>
+          <span v-else-if="line.type === 'response'" v-html="line.text"></span>
+          <span v-else-if="line.type === 'error'" class="error-text" v-html="line.text"></span>
+          <span v-else v-html="line.text"></span>
+        </div>
+        <div class="input-line">
+          <span class="prompt">guest@portfolio:~$</span>
+          <input type="text" v-model="commandInput" @keydown.enter="handleCommand"
+            @keydown.ctrl.c.prevent="minimizeTerminal" @keydown.ctrl.z.prevent="minimizeTerminal"
+            @keydown.arrow-up.prevent="navigateHistory('up')" @keydown.arrow-down.prevent="navigateHistory('down')"
+            ref="commandInputRef" autofocus />
+        </div>
+      </div>
+      <div class="resizer" @mousedown="startResize"></div>
+    </div>
+
+    <div class="content-container">
+      <div v-if="Object.keys(activeSections).length === 0" class="placeholder">
+        <h1>Ibrahim Athamaneh</h1>
+        <p class="subtitle">Junior Java Developer | AI & Robotics Student</p>
+        <p>Welcome to my interactive portfolio. <br>Use the terminal to navigate through my profile.</p>
+        <p>Try typing <code>help</code> to get started.</p>
+      </div>
+      <div v-for="(section, key) in activeSections" :key="key" v-html="section.html"></div>
+    </div>
+
+  </div>
+
+  <script type="module" src="../script/legacy.js" defer></script>
+</body>
+
+</html>
