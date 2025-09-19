@@ -1,3 +1,7 @@
+* {
+    cursor: none;
+}
+
 :root {
     --font-header: 'VT323', monospace;
     --font-body: 'Roboto', sans-serif;
